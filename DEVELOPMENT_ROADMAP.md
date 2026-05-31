@@ -16,49 +16,51 @@ Each phase should include implementation, automated testing, documentation updat
 
 ## 2. Phase 1: Authentication and Expense Tracking
 
+Status: in progress, partially completed.
+
 Goal: users can securely create accounts, sign in, and manage expenses.
 
 ### Backend
 
-- Initialize Laravel 12 project in `backend/`.
-- Configure MySQL connection and environment management.
-- Add JWT authentication package and token lifecycle.
-- Create migrations for:
+- [x] Initialize Laravel 12 API structure in `backend/`.
+- [x] Configure MySQL connection and environment management.
+- [x] Add JWT authentication package and token lifecycle.
+- [x] Create migrations for:
   - `users`
   - `expense_categories`
   - `expenses`
-- Create seeders for default expense categories.
-- Implement auth endpoints:
+- [x] Create seeders for default expense categories.
+- [x] Implement auth endpoints:
   - Register
   - Login
-  - Refresh
   - Logout
   - Current user
-- Implement expense category endpoints.
-- Implement expense CRUD endpoints.
-- Add Laravel policies to enforce per-user ownership.
-- Add validation Form Requests.
-- Add feature tests for auth and expense CRUD.
+- [x] Implement expense category listing endpoint.
+- [x] Implement expense CRUD endpoints.
+- [x] Enforce per-user expense ownership in protected controllers.
+- [x] Add validation Form Requests.
+- [ ] Add refresh-token endpoint.
+- [ ] Add feature tests for auth and expense CRUD.
 
 ### Frontend
 
-- Initialize Next.js project in `frontend/`.
-- Configure TypeScript and Tailwind CSS.
-- Create auth pages:
+- [x] Initialize Next.js project structure in `frontend/`.
+- [x] Configure TypeScript and Tailwind CSS.
+- [x] Create auth pages:
   - Register
   - Login
-- Add authenticated dashboard layout.
-- Build expense list, create, edit, and delete flows.
-- Build category selection UI.
-- Add API client with JWT handling.
-- Add route protection middleware.
+- [x] Add authenticated dashboard layout.
+- [x] Build expense list, create, edit, and delete flows.
+- [x] Build category selection UI.
+- [x] Add API client with JWT handling.
+- [x] Add client-side route protection and auth redirects.
 
 ### AI Service
 
-- Initialize FastAPI project in `ai-service/`.
-- Add health endpoint.
-- Define request and response schemas for future categorization.
-- No model behavior required in Phase 1.
+- [ ] Initialize FastAPI project in `ai-service/`.
+- [ ] Add health endpoint.
+- [ ] Define request and response schemas for future categorization.
+- [x] No model behavior required in Phase 1.
 
 ### Acceptance Criteria
 

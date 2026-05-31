@@ -1,5 +1,29 @@
 # FinSight AI API Specification
 
+## Phase 1 Implementation Status
+
+Phase 1 is in progress and partially implemented for the authentication and expense tracking MVP.
+
+Implemented Phase 1 backend surface:
+
+- `POST /api/v1/auth/register`
+- `POST /api/v1/auth/login`
+- `POST /api/v1/auth/logout`
+- `GET /api/v1/auth/me`
+- `GET /api/v1/expense-categories`
+- `GET /api/v1/expenses`
+- `POST /api/v1/expenses`
+- `GET /api/v1/expenses/{id}`
+- `PATCH /api/v1/expenses/{id}`
+- `DELETE /api/v1/expenses/{id}`
+
+Not implemented in Phase 1:
+
+- AI categorization endpoints.
+- Forecast generation endpoints.
+- AI recommendation endpoints.
+- Full dashboard analytics endpoints.
+
 ## 1. API Overview
 
 The Laravel backend exposes a versioned REST API consumed by the Next.js frontend. The AI service exposes internal REST endpoints consumed only by the backend.
@@ -260,9 +284,9 @@ Response:
 | Method | Endpoint | Auth | Purpose |
 | --- | --- | --- | --- |
 | `GET` | `/api/v1/expense-categories` | Yes | List system and user categories. |
-| `POST` | `/api/v1/expense-categories` | Yes | Create a custom category. |
-| `PATCH` | `/api/v1/expense-categories/{id}` | Yes | Update a custom category. |
-| `DELETE` | `/api/v1/expense-categories/{id}` | Yes | Deactivate or delete a custom category. |
+| `POST` | `/api/v1/expense-categories` | Yes | Future: create a custom category. |
+| `PATCH` | `/api/v1/expense-categories/{id}` | Yes | Future: update a custom category. |
+| `DELETE` | `/api/v1/expense-categories/{id}` | Yes | Future: deactivate or delete a custom category. |
 
 Create request:
 
@@ -303,7 +327,9 @@ POST /api/v1/expenses
 
 Auth: required.
 
-Request:
+Phase 1 implements category listing only. Custom category mutation is reserved for a later enhancement.
+
+Future create request:
 
 ```json
 {
@@ -312,7 +338,7 @@ Request:
   "merchant": "Fresh Market",
   "description": "Weekly groceries",
   "expense_date": "2026-05-31",
-  "expense_category_id": 1,
+  "category_id": 1,
   "payment_method": "card",
   "is_recurring": false
 }
@@ -349,6 +375,8 @@ POST /api/v1/expenses/{id}/categorize
 ```
 
 Auth: required.
+
+Status: not implemented in Phase 1.
 
 Purpose: asks the backend to call the AI service for category prediction.
 

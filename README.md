@@ -2,46 +2,120 @@
 
 FinSight AI is an AI-powered personal finance intelligence platform that helps users track expenses, analyze spending behavior, forecast future costs, and receive smarter budgeting recommendations.
 
-## Overview
+## Current Status
 
-Most budgeting tools only record transactions. FinSight AI goes further by turning personal finance data into useful insights through dashboards, category analytics, forecasting, and machine learning-based recommendations.
+Phase 1 is in progress. The MVP foundation now focuses on authentication and expense tracking only.
 
-This project is designed to demonstrate full-stack development, data handling, and applied AI/ML in a practical finance use case.
+Implemented foundation:
 
-## Core Features
+- Laravel API structure in `backend/`
+- JWT authentication endpoints
+- User registration, login, logout, and profile endpoint
+- Protected expense routes
+- MySQL migrations for users, expense categories, and expenses
+- Default expense category seeder
+- Next.js frontend structure in `frontend/`
+- Register and login pages
+- Dashboard placeholder
+- Expense list, create, and edit pages
+- Frontend API integration with loading and error states
 
-- Expense tracking and transaction management
-- Interactive spending dashboard
-- Category-based spending analytics
-- AI-assisted expense categorization
-- Monthly spending forecasting
-- Budget recommendation system
-- User-friendly financial insights
+Not implemented yet:
+
+- AI categorization
+- Forecasting
+- Budget intelligence
+- Full dashboard analytics
+
+## Project Structure
+
+```text
+finsightAI/
+├── backend/                 # Laravel 12 REST API
+├── frontend/                # Next.js TypeScript frontend
+├── ai-service/              # Reserved for FastAPI AI service
+├── docs/
+├── API_SPECIFICATION.md
+├── DATABASE_SCHEMA.md
+├── DEVELOPMENT_ROADMAP.md
+└── SYSTEM_ARCHITECTURE.md
+```
 
 ## Tech Stack
 
-### Frontend
-- React / Next.js
+Frontend:
 
-### Backend
-- Laravel
+- Next.js
+- TypeScript
+- Tailwind CSS
+
+Backend:
+
+- Laravel 12
 - MySQL
+- JWT authentication
 
-### AI / Machine Learning
+AI service:
+
 - Python
+- FastAPI
 - Scikit-Learn
 
-## Project Goals
+The AI service is intentionally not implemented in Phase 1.
 
-- Build a clean full-stack finance platform
-- Apply machine learning to real-world spending data
-- Create useful visual dashboards for financial decision-making
-- Demonstrate strong software engineering practices
-- Prepare the project as a portfolio piece for AI/software engineering internships
+## Backend Setup
 
-## Current Status
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan jwt:secret
+php artisan migrate --seed
+php artisan serve
+```
 
-🚧 Currently under active development.
+Default backend URL:
+
+```text
+http://localhost:8000/api/v1
+```
+
+## Frontend Setup
+
+```bash
+cd frontend
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Default frontend URL:
+
+```text
+http://localhost:3000
+```
+
+## Phase 1 API Surface
+
+Authentication:
+
+- `POST /api/v1/auth/register`
+- `POST /api/v1/auth/login`
+- `POST /api/v1/auth/logout`
+- `GET /api/v1/auth/me`
+
+Expense categories:
+
+- `GET /api/v1/expense-categories`
+
+Expenses:
+
+- `GET /api/v1/expenses`
+- `POST /api/v1/expenses`
+- `GET /api/v1/expenses/{id}`
+- `PATCH /api/v1/expenses/{id}`
+- `DELETE /api/v1/expenses/{id}`
 
 ## Author
 
